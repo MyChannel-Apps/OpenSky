@@ -1,0 +1,44 @@
+::selection, ::-webkit-selection, *::selection {
+	background:					transparent;
+	background:					rgba(255, 255, 255, 0);
+}
+
+*, *:hover, *:focus, *:active {
+	cursor:						default;
+	outline:					none !important;
+	-webkit-overflow-scrolling:	touch;
+	-webkit-font-smoothing:		antialiased;
+	user-select:				none;
+}
+
+html, body {
+	width:						100%;
+	height:						100%;
+	padding:					0;
+	margin:						0;
+	overflow:					hidden;
+	-webkit-box-sizing:			border-box;
+	box-sizing:					border-box;
+}
+
+html {
+    position:					relative;
+    min-height:					100%;
+}
+
+body {
+	font-smoothing:				antialiased;
+	font-smooth:				always;
+	text-rendering:				optimizeLegibility;
+	font-family:				arial;
+	margin:						0 0 100px;
+	background:					#002846;
+}
+
+button {
+	cursor: pointer;
+}
+
+img {
+	vertical-align: baseline;
+}
