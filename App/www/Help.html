@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>OpenSky :: Hilfe</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script type="text/javascript" src="js/Debug.js"></script>
+		<script type="text/javascript" src="/apps/api/knuddels-api.js"></script>
+		<script type="text/javascript">
+			Client.includeCSS('css/Globals.css', 'css/Help.css');
+		</script
+		<!--[if gte IE 9]>
+			<style type="text/css">
+				footer p button, footer p button:hover, footer p button:active {
+					filter: none;
+				}
+			</style>
+		<![endif]-->
+	</head>
+	<body>
+		<header>
+			Hilfe
+		</header>
+		<section>
+			<nav>
+				<a href="#" data-tab="index" class="active">Übersicht</a>
+				<a href="#" data-tab="global">Allgemein</a>
+				<a href="#" data-tab="settings">Einstellungen</a>
+				<a href="#" data-tab="bank">Konto</a>
+				<a href="#" data-tab="games">Spiele</a>
+			</nav>
+
+			<input id="index" name="tab" type="radio" checked />			
+			<article data-tab="index">
+				<p class="text-center">Hier findest du die Aufstellung aller Fragen und Antworten, die im Anschluss in den entsprechenden Tags aufgelistet sind.</p>
+				<h1>Allgemein:</h1>
+				<ul>
+					<li><a href="#global">Was ist OpenSky?</a></li>
+					<li><a href="#global">Wieso kann ich den Channel nicht betreten?</a></li>
+					<li><a href="#global">Wie kann ich meinen eigenen DICE-Channel anlegen?</a></li>
+				</ul>
+				<h1>Einstellungen:</h1>
+				<ul>
+					<li><a href="#settings">Wie kann ich die Benachrichtigungen verändern?</a></li>
+					<li><a href="#settings">Wie bestelle ich den Newsletter ab?</a></li>
+				</ul>
+				<h1>Konto:</h1>
+				<ul>
+					<li><a href="#bank">Wie viele Knuddel habe ich auf meinem Konto?</a></li>
+					<li><a href="#bank">Wie zahle ich Knuddel ein?</a></li>
+					<li><a href="#bank">Wie zahle ich meinen Gewinn aus?</a></li>
+				</ul>
+				<h1>Spiele:</h1>
+				<ul>
+					<li><a href="#games">Skyscraper</a></li>
+					<li><a href="#games">Darten</a></li>
+					<li><a href="#games">GreedyCloud</a></li>
+					<li><a href="#games">Gottesleiter</a></li>
+					<li><a href="#games">Present</a></li>
+				</ul>
+			</article>
+			
+			<input id="global" name="tab" type="radio" />
+			<article data-tab="global">
+				Allgemein
+			</article>
+			
+			<input id="settings" name="tab" type="radio" />
+			<article data-tab="settings">
+				Einstellungen
+			</article>
+			
+			<input id="bank" name="tab" type="radio" />
+			<article data-tab="bank">
+				Konto
+			</article>
+			
+			<input id="games" name="tab" type="radio" />
+			<article data-tab="games">
+				Spiele
+			</article>
+		</section>
+		<footer>
+			<p>
+				<button data-action="dismiss">Schließen</button>
+			</p>
+		</footer>
+		<script type="text/javascript">
+			Client.includeJS('/apps/api/jquery.min.js', 'js/Globals.js');
+		</script>
+	</body>
+</html>

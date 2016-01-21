@@ -15,6 +15,7 @@ var Globals	= this;
 */
 var App		= (new function AppContainer() {	
 	var _instances = {
+		Classes:	[],
 		Core:		[],
 		Features:	[],
 		Games:		[],
@@ -93,6 +94,20 @@ var App		= (new function AppContainer() {
 	
 	this.onAccountChangedKnuddelAmount = function onAccountChangedKnuddelAmount(user, account) {
 		App.call('onAccountChangedKnuddelAmount', user, account);
+	};
+	
+	this.mayJoinChannel = function mayJoinChannel(user) {
+		if(!user.isAppManager() && !user.isChannelModerator()) {
+			return ChannelJoinPermission.denied('Maintenance. Please visit °>OpenSky.ChannelApp.de|http://OpenSky.ChannelApp.de/<° for more informations.');
+		}
+
+		return ChannelJoinPermission.accepted();
+	};
+	
+	this.chatCommands = {
+		Helper: function Helper(user, params) {
+			new Popup(user, 'Help', 'Hilfe', 'assets/knuddel.gif', 678, 528);
+		}
 	};
 	
 	this.toJSON = function toJSON() {

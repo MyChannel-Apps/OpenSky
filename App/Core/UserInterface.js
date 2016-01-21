@@ -13,10 +13,10 @@ function UserInterface() {
 		switch(user.getClientType()) {
 			case ClientType.Applet:
 			case ClientType.Browser:
-				_instance.open(user, 'index', 160, 400);
+				_instance.open(user, 'Overview', 160, 400);
 			break;
 			case ClientType.Android:
-				_instance.open(user, 'index', 400, 100);
+				_instance.open(user, 'Overview', 400, 100);
 			break;
 			default:
 				KnuddelsServer.getDefaultLogger().warn('Unknown ClientType: ' + user.getClientType());
