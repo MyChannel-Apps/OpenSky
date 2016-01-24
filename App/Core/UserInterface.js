@@ -13,7 +13,7 @@ function UserInterface() {
 		switch(user.getClientType()) {
 			case ClientType.Applet:
 			case ClientType.Browser:
-				_instance.open(user, 'Overview', 160, 400);
+				_instance.open(user, 'Overview', 220, 400);
 			break;
 			case ClientType.Android:
 				_instance.open(user, 'Overview', 400, 100);

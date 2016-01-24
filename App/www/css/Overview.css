@@ -1,0 +1,116 @@
+body {
+	background: #002846;
+}
+
+/* Header */
+header {
+	padding: 10px;
+	border-bottom: 1px solid #000000;
+	background: #265375;
+}
+
+body[data-ClientType="Android"] header {
+	float: left;
+	width: 170px;
+	height: 100px;
+	border-right: 1px solid #000000;
+	border-bottom: none;
+}
+
+header picture {
+	float: left;
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background: #FFFFFF;
+	border-radius: 100%;
+	border: 2px solid #DDDDDD;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: cover;
+}
+
+header aside {
+	float: right;
+	display: inline-block;
+	width: 140px;
+}
+
+body[data-ClientType="Android"] header aside {
+	width: 90px;
+}
+
+header aside label {
+	color: #FFFFFF;
+	font-size: 11px;
+	padding: 10px 0 5px 0;
+	display: block;
+}
+
+header aside button {
+	padding: 2px 8px;
+	font-size: 11px;
+}
+
+body[data-ClientType="Android"] header aside button {
+	padding: 3px 10px;
+	font-size: 12px;
+	min-width: 70px;
+	margin: 0 0 5px 10px;
+}
+
+/* Content */
+section {
+	padding: 0;
+	width: 218px;
+	height: 327px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+body[data-ClientType="Android"] section {
+	float: right;
+	width: 230px;
+	height: 100px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+}
+
+section ul {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	list-style: none;
+}
+
+body[data-ClientType="Android"] section ul {
+	width: auto;
+	height: 100%;
+}
+
+section ul li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 219px;
+	height: 75px;
+	cursor: pointer;
+	border-bottom: 1px solid #000000;
+}
+
+body[data-ClientType="Android"] section ul li {
+	height: 100px;
+	width: 100px;
+}
+
+section ul li:nth-child(even) {
+	background: rgba(255, 255, 255, 0.2);
+}
+
+section ul li[data-game="Skyscraper"] {
+	background-image: url('../assets/overview/skyscraper.png');
+}
+
+section ul li[data-game="GodLadder"] {
+	background-image: url('../assets/overview/godladder.png?v2');
+}

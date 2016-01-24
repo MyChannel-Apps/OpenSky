@@ -5,9 +5,10 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script type="text/javascript" src="js/Debug.js"></script>
 		<script type="text/javascript" src="/apps/api/knuddels-api.js"></script>
 		<script type="text/javascript">
-			Client.includeCSS('css/Globals.css');
+			Client.includeCSS('css/Globals.css', 'css/Overview.css');
 		</script>
 
 		<!--[if lt IE 9]>
@@ -18,18 +19,20 @@
 	</head>
 	<body>
 		<header>
-			<h1>OpenSky</h2>
-			<h2>Dein OpenSource Dice-Channel</h2>
+			<picture></picture>
+			<aside>
+				<label>Dein Konto: <span>0 Knuddel</span></label>
+				<button data-action="payin">Einzahlen</button>
+				<button data-action="payout">Auszahlen</button>
+			</aside>
+			<div class="clear"></div>
 		</header>
 		<section>
-		
-		</section>
-		<footer>
 			<ul>
-				<li>2,0Kn</li>
-				<li>Min</li>
+				<li data-action="game" data-game="Skyscraper"></li>
+				<li data-action="game" data-game="GodLadder"></li>
 			</ul>
-		</footer>
+		</section>
 		<script type="text/javascript">
 			Client.includeJS('/apps/api/jquery.min.js', 'js/Overview.js');
 		</script>

@@ -15,11 +15,11 @@ var Globals	= this;
 */
 var App		= (new function AppContainer() {	
 	var _instances = {
-		Classes:	[],
-		Core:		[],
-		Features:	[],
-		Games:		[],
-		Team:		[]
+		Classes:	{},
+		Core:		{},
+		Features:	{},
+		Games:		{},
+		Team:		{}
 	};
 
 	/**
@@ -40,7 +40,7 @@ var App		= (new function AppContainer() {
 		Config[type].forEach(function CoreInstancesEach(name) {
 			try {
 				require(type + '/' + name + '.js');
-				App.exec(name + ' = new ' + name + '(); _instances.' + type + '.push(' + name + ');', Globals);
+				App.exec(name + ' = new ' + name + '(); _instances.' + type + '[\'' + name + '\'] = ' + name + ';', Globals);
 			} catch(e) {
 				KnuddelsServer.getDefaultLogger().warn('Can\'t load "' + name + '"!');
 				KnuddelsServer.getDefaultLogger().debug(e);
@@ -52,11 +52,13 @@ var App		= (new function AppContainer() {
 		var args = Array.prototype.slice.call(arguments, 1) || [];
 		
 		for(var type in _instances) {
-			_instances[type].forEach(function InstancesEach(instance) {
+			for(var entry in _instances[type]) {
+				var instance = _instances[type][entry];
+				
 				if(typeof(instance[name]) != 'undefined') {
 					instance[name].apply(this, args);
 				}
-			});
+			}
 		}
 	};
 	
@@ -104,9 +106,36 @@ var App		= (new function AppContainer() {
 		return ChannelJoinPermission.accepted();
 	};
 	
+	this.onEventReceived = function onEventReceived(user, type, data, session) {
+		switch(type) {
+			case 'game':
+				if(typeof(_instances.Games[data]) == 'undefined') {
+					user.sendPrivateMessage('Unbekanntes Spiel!');
+					return;
+				}
+				
+				_instances.Games[data].open.apply(this, [ user ]);
+			break;
+			case 'command':
+				switch(data) {
+					case 'payin':
+					case 'payout':
+						Bank[data].apply(this, [ user ]);
+					break;
+				}
+			break;
+			default:
+				KnuddelsServer.getDefaultLogger().info(type + ': ' + JSON.stringify(data, 1, 4));
+			break;
+		}
+	};
+	
 	this.chatCommands = {
 		Helper: function Helper(user, params) {
 			new Popup(user, 'Help', 'Hilfe', 'assets/knuddel.gif', 678, 528);
+		},
+		Notifications: function Notifications(user, params) {
+			new Popup(user, 'Notifications', 'Benachrichtigungen', 'assets/knuddel.gif', 415, 680);
 		}
 	};
 	

@@ -34,16 +34,33 @@ body {
 	font-smooth:				always;
 	text-rendering:				optimizeLegibility;
 	font-family:				Arial;
-	/*margin:						0 0 100px;
+	/*margin:					0 0 100px;
 	background:					#002846;*/
 }
 
 button {
 	cursor: pointer;
+	background-color: rgba(255, 255, 255, 0.25);
+	color: #FFF;
+	font-weight: 400;
+	border: 0;
+	border-radius: 3px;
+	display: inline-block;
+	padding: 6px 15px;
+	font-size: 14px;
+	transition: background-color .35s ease;
+}
+
+button:hover {
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 img {
 	vertical-align: baseline;
+}
+
+.clear {
+	clear: both;
 }
 
 /* Typographie */

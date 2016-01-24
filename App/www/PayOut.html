@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Auszahlen</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script type="text/javascript" src="js/Debug.js"></script>
+		<script type="text/javascript" src="/apps/api/knuddels-api.js"></script>
+		<script type="text/javascript">
+			Client.includeCSS('css/Globals.css', 'css/Bank.css');
+		</script
+		<!--[if gte IE 9]>
+			<style type="text/css">
+				footer p button, footer p button:hover, footer p button:active {
+					filter: none;
+				}
+			</style>
+		<![endif]-->
+		<style>
+			.indent {
+				padding: 0 0 0 20px;
+			}
+		</style>
+	</head>
+	<body data-popup="solid">
+		<header>
+			Auszahlen
+		</header>
+		<section>
+			<br />
+			<br />
+			<br />
+			<br />
+			<article>
+				<span>Bitte gebe die Knuddel an, die du auszahlen möchtest:</span>
+				<br />
+				<img src="assets/knuddel.gif" alt="" /> <input type="text" name="knuddel" value="" /> Knuddel
+			</article>
+		</section>
+		<footer>
+			<p>
+				<button data-action="dismiss">Abbrechen</button>
+				<button data-action="payout">Jetzt auszahlen</button>
+			</p>
+		</footer>
+		<script type="text/javascript">
+			Client.includeJS('/apps/api/jquery.min.js', 'js/Globals.js');
+		</script>
+	</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>OpenSky :: Benachrichtigungen</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script type="text/javascript" src="js/Debug.js"></script>
+		<script type="text/javascript" src="/apps/api/knuddels-api.js"></script>
+		<script type="text/javascript">
+			Client.includeCSS('css/Globals.css', 'css/Help.css');
+		</script
+		<!--[if gte IE 9]>
+			<style type="text/css">
+				footer p button, footer p button:hover, footer p button:active {
+					filter: none;
+				}
+			</style>
+		<![endif]-->
+		<style>
+			.indent {
+				padding: 0 0 0 20px;
+			}
+		</style>
+	</head>
+	<body data-popup="solid">
+		<section>		
+			<article>
+				<h1>Spiele:</h1>
+				<ul>
+					<li>
+						<strong>Skyscraper Highscore</strong>
+						<div class="indent">
+							<input type="radio" name="game[skysraper]" value="on" id="skysraper_on" checked /> <label for="skysraper_on">immer benachrichtigen</label>
+							<br />
+							<input type="radio" name="game[skysraper]" value="off" id="skysraper_off" /> <label for="skysraper_off">keine Erinnerung</label>
+						</div>
+					</li>
+					<li>
+						<strong>Dart-Event Benachrichtigungen</strong>
+						<div class="indent">
+							<input type="radio" name="game[dart]" value="on" id="dart_on" checked /> <label for="dart_on">rechtzeitig informieren</label>
+							<br />
+							<input type="radio" name="game[dart]" value="off" id="dart_off" /> <label for="dart_off">keine Erinnerung</label>
+						</div>
+					</li>
+					<li>
+						<strong>GreedyCloud Status</strong>
+						<div class="indent">
+							<input type="radio" name="game[greedycloud]" value="on" id="greedycloud_on" checked /> <label for="greedycloud_on">Statusbenachrichtigungen senden</label>
+							<br />
+							<input type="radio" name="game[greedycloud]" value="off" id="greedycloud_off" /> <label for="greedycloud_off">keine Erinnerung</label>
+						</div>
+					</li>
+					<li>
+						<strong>Gottesleiter</strong>
+						<div class="indent">
+							<input type="radio" name="game[god]" value="on" id="god_on" checked /> <label for="god_on">???</label>
+							<br />
+							<input type="radio" name="game[god]" value="off" id="god_off" /> <label for="god_off">keine Erinnerung</label>
+						</div>
+					</li>
+					<li>
+						<strong>Present Erinnerungen</strong>
+						<div class="indent">
+							<input type="radio" name="game[present]" value="on" id="present_on" checked /> <label for="present_on">rechtzeitig einladen</label>
+							<br />
+							<input type="radio" name="game[present]" value="off" id="present_off" /> <label for="present_off">keine Einladungen</label>
+						</div>
+					</li>
+				</ul>
+				<h1>Newsletter:</h1>
+				<ul>
+					<li>
+						<strong>Interne und Externe Channel-Werbung</strong>
+						<div class="indent">
+							<input type="radio" name="newsletter" value="on" id="newsletter_on" checked /> <label for="newsletter_on">eingeschaltet</label>
+							<br />
+							<input type="radio" name="newsletter" value="off" id="newsletter_off" /> <label for="newsletter_off">ausgeschaltet</label>
+						</div>
+					</li>
+				</ul>
+			</article>
+		</section>
+		<footer>
+			<p>
+				<button data-action="save">Speichern</button>
+				<button data-action="dismiss">Abbrechen</button>
+			</p>
+		</footer>
+		<script type="text/javascript">
+			Client.includeJS('/apps/api/jquery.min.js', 'js/Globals.js');
+		</script>
+	</body>
+</html>

@@ -10,7 +10,9 @@ OpenSky
 
 OpenSource Game-Channel für Knuddels
 
-Informationen findest du auf der `Website <http://OpenSky.ChannelApp.de/>`_
+Informationen findest du auf der `Website <http://OpenSky.ChannelApp.de/>`_.
+
+**ACHTUNG:** Solltest du OpenSky (auch wenn nur Teile davon) verwenden, **musst** du das OpenSource-Projekt in irgend einer Form erwähnen! Dies ist eine Bedigung um Nutzungsrechte zu erlangen, schließlich wurde viel Zeit in das Projekt gesteckt.
 
 :Author: 
     Adrian Preuß

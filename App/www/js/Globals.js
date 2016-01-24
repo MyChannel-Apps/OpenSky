@@ -27,6 +27,16 @@ var Globals = (new function Globals($) {
 				case 'dismiss':
 					Client.close();
 				break;
+				case 'payin':
+					var knuddel = parseInt($('input[name="knuddel"]').val(), 10);
+					Client.executeSlashCommand('/appknuddel ' + Client.pageData.bot + ':' + knuddel);
+					Client.close();
+				break;
+				case 'payout':
+					var knuddel = parseInt($('input[name="knuddel"]').val(), 10);
+					Client.executeSlashCommand('/knuddelaccount payout:' + Client.pageData.app + ':' + knuddel);
+					Client.close();
+				break;
 			}
 		});
 	};
