@@ -40,6 +40,11 @@ var App		= (new function AppContainer() {
 		Config[type].forEach(function CoreInstancesEach(name) {
 			try {
 				require(type + '/' + name + '.js');
+
+				if(type == 'Classes' && name == 'Popup' || type == 'Settings') {
+					return;
+				}
+
 				App.exec(name + ' = new ' + name + '(); _instances.' + type + '[\'' + name + '\'] = ' + name + ';', Globals);
 			} catch(e) {
 				KnuddelsServer.getDefaultLogger().warn('Can\'t load "' + name + '"!');
@@ -98,9 +103,14 @@ var App		= (new function AppContainer() {
 		App.call('onAccountChangedKnuddelAmount', user, account);
 	};
 	
+	this.onUserDiced = function onUserDiced(event) {
+		App.call('onDice', event);
+	};
+	
 	this.mayJoinChannel = function mayJoinChannel(user) {
 		if(!user.isAppManager() && !user.isChannelModerator()) {
-			return ChannelJoinPermission.denied('Maintenance. Please visit °>OpenSky.ChannelApp.de|http://OpenSky.ChannelApp.de/<° for more informations.');
+			KnuddelsServer.getDefaultLogger().info('DECLINE: ' + user.getNick());
+			return ChannelJoinPermission.denied('°RR°_WARTUNGSARBEITEN:_°r°#Derzeit kannst du den _°BB>ico_dice-6_001.gif<>|<>_h Channel ' + KnuddelsServer.getChannel().getChannelName() + '|/info ' + KnuddelsServer.getChannel().getChannelName() + '<r°_ nicht betreten, bitte versuche es zu einem späteren Zeitpunkt noch einmal.##Weitere Informationen findest du auf der °11>{button}Website||call|http://OpenSky.ChannelApp.de/|color|clearBlack|height|20|my|2<r° zu unserem OpenSource-Projekt.°##>CENTER<>' + KnuddelsServer.getFullImagePath('assets/ads/info.png') + '<°#°>LEFT<°');
 		}
 
 		return ChannelJoinPermission.accepted();
@@ -114,7 +124,7 @@ var App		= (new function AppContainer() {
 					return;
 				}
 				
-				_instances.Games[data].open.apply(this, [ user ]);
+				_instances.Games[data].open.apply(this, [ user, '' ]);
 			break;
 			case 'command':
 				switch(data) {
@@ -122,19 +132,33 @@ var App		= (new function AppContainer() {
 					case 'payout':
 						Bank[data].apply(this, [ user ]);
 					break;
+					case 'notifications':
+						App.chatCommands.Notifications(user);
+					break;
+					case 'help':
+						App.chatCommands.Helper(user);
+					break;
+					case 'toggle':
+						UserInterface.toggle(user);
+					break;
 				}
 			break;
 			default:
+				if(typeof(_instances.Games[type]) != 'undefined' && typeof(data.action) != 'undefined' && typeof(_instances.Games[type][data.action]) != 'undefined') {
+					_instances.Games[type][data.action].apply(this, [ user, data ]);
+					return;
+				}
+				
 				KnuddelsServer.getDefaultLogger().info(type + ': ' + JSON.stringify(data, 1, 4));
 			break;
 		}
 	};
 	
 	this.chatCommands = {
-		Helper: function Helper(user, params) {
+		Helper: function Helper(user) {
 			new Popup(user, 'Help', 'Hilfe', 'assets/knuddel.gif', 678, 528);
 		},
-		Notifications: function Notifications(user, params) {
+		Notifications: function Notifications(user) {
 			new Popup(user, 'Notifications', 'Benachrichtigungen', 'assets/knuddel.gif', 415, 680);
 		}
 	};

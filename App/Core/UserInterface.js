@@ -13,10 +13,13 @@ function UserInterface() {
 		switch(user.getClientType()) {
 			case ClientType.Applet:
 			case ClientType.Browser:
-				_instance.open(user, 'Overview', 220, 400);
+				_instance.open(user, 'Overview', 220, user.getPersistence().getObject('_ui_toggled', false) ? 100 : 400);
 			break;
 			case ClientType.Android:
 				_instance.open(user, 'Overview', 400, 100);
+			break;
+			case ClientType.Offline:
+				/* Do Nothing */
 			break;
 			default:
 				KnuddelsServer.getDefaultLogger().warn('Unknown ClientType: ' + user.getClientType());
@@ -29,9 +32,9 @@ function UserInterface() {
 		var file	= name;
 		
 		switch(user.getClientType()) {
-			case ClientType.Android:
+			/*case ClientType.Android:
 				prefix = 'Android';
-			break;
+			break;*/
 			case ClientType.IOS:
 				prefix = 'iOS';
 			break;
@@ -41,11 +44,26 @@ function UserInterface() {
 			file += '@' + prefix;
 		}
 		
-		user.setAppContent(AppContent.overlayContent(new HTMLFile(file + '.html', _instance.getData(user)), width, height));
+		var content			= AppContent.overlayContent(new HTMLFile(file + '.html', _instance.getData(user)), width, height);
+		var configuration	= content.getLoadConfiguration();
+		
+		configuration.setBackgroundColor(Color.fromRGB(0, 40, 70));
+		configuration.setForegroundColor(Color.fromRGB(255, 255, 255));
+		configuration.setText('Lade OpenSky...');
+		
+		user.setAppContent(content);
+	};
+	
+	this.toggle = function toggle(user) {
+		user.getPersistence().setObject('_ui_toggled', !user.getPersistence().getObject('_ui_toggled', false));
+		this.onUserJoined(user);
 	};
 	
 	this.getData = function getData(user) {
 		return {
+			ui: {
+				toggle:	user.getPersistence().getObject('_ui_toggled', false)
+			},
 			picture: 	user.getProfilePhoto(100, 100),
 			knuddel:	user.getKnuddelAccount().getKnuddelAmount().asNumber()
 		};

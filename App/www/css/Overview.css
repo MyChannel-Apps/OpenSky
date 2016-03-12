@@ -9,12 +9,30 @@ header {
 	background: #265375;
 }
 
-body[data-ClientType="Android"] header {
+body[data-client="Android"] header {
 	float: left;
 	width: 170px;
 	height: 100px;
-	border-right: 1px solid #000000;
+	border-right: 1px solid #FFFFFF;
 	border-bottom: none;
+}
+
+header button[data-command="toggle"] {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 20px;
+	height: 18px;
+	padding: 0 5px;
+}
+
+header button[data-command="toggle"]:after {
+	display: block;
+	position: absolute;
+	content: "";
+	width: 10px;
+	height: 3px;
+	background: rgba(255, 255, 255, 0.5);
 }
 
 header picture {
@@ -36,7 +54,7 @@ header aside {
 	width: 140px;
 }
 
-body[data-ClientType="Android"] header aside {
+body[data-client="Android"] header aside {
 	width: 90px;
 }
 
@@ -47,12 +65,16 @@ header aside label {
 	display: block;
 }
 
+body[data-client="Android"] header aside label {
+	padding: 0 0 5px 0;	
+}
+
 header aside button {
 	padding: 2px 8px;
 	font-size: 11px;
 }
 
-body[data-ClientType="Android"] header aside button {
+body[data-client="Android"] header aside button {
 	padding: 3px 10px;
 	font-size: 12px;
 	min-width: 70px;
@@ -63,12 +85,12 @@ body[data-ClientType="Android"] header aside button {
 section {
 	padding: 0;
 	width: 218px;
-	height: 327px;
+	height: 297px;
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
 
-body[data-ClientType="Android"] section {
+body[data-client="Android"] section {
 	float: right;
 	width: 230px;
 	height: 100px;
@@ -83,7 +105,7 @@ section ul {
 	list-style: none;
 }
 
-body[data-ClientType="Android"] section ul {
+body[data-client="Android"] section ul {
 	width: auto;
 	height: 100%;
 }
@@ -98,9 +120,11 @@ section ul li {
 	border-bottom: 1px solid #000000;
 }
 
-body[data-ClientType="Android"] section ul li {
+body[data-client="Android"] section ul li {
 	height: 100px;
-	width: 100px;
+	width: 230px;
+	background-position: 50% 50%;
+	background-size: cover;
 }
 
 section ul li:nth-child(even) {
@@ -113,4 +137,66 @@ section ul li[data-game="Skyscraper"] {
 
 section ul li[data-game="GodLadder"] {
 	background-image: url('../assets/overview/godladder.png?v2');
+}
+
+/* Footer */
+footer {
+	width: 100%;
+	height: 30px;
+	border-top: 1px solid #000000;
+	background: #265375;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: table;
+	table-layout: fixed;
+	text-align: center;
+}
+
+body[data-client="Android"] footer {
+	right: initial;
+	width: 169px;
+	border-top: 1px solid #FFFFFF;
+}
+
+footer article {
+	width: 100%;
+	height: 100%;
+	display: table;
+	table-layout: fixed;
+}
+
+footer article button {
+	min-width: 50px;
+	min-height: 28px;
+    display: table-cell;
+	margin: 2px 2px;
+    position: relative;
+	table-layout: fixed;
+	padding: 0;
+	width: 1%;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+body[data-client="Android"] footer article button {
+	min-width: 35px;
+	min-height: 22px;
+}
+
+footer article button[data-command="toplist"] {
+	background-image: url('http://chat.knuddels.de/pics/quests/reward.png');
+}
+
+footer article button[data-command="readme"] {
+	background-image: url('http://chat.knuddels.de/pics/sm_classic_00.gif');
+}
+
+footer article button[data-command="help"] {
+	background-image: url('http://chat.knuddels.de/pics/bingo/buttonHelp.png');
+}
+
+footer article button[data-command="notifications"] {
+	background-image: url('http://chat.knuddels.de/pics/bingo/buttonSoundOn.png');
 }

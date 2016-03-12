@@ -17,13 +17,14 @@
 			</script>
 		<![endif]-->
 	</head>
-	<body>
+	<body data-toggle="false" data-client="Unknown">
 		<header>
+			<button data-action="command" data-command="toggle"></button>
 			<picture></picture>
 			<aside>
 				<label>Dein Konto: <span>0 Knuddel</span></label>
-				<button data-action="payin">Einzahlen</button>
-				<button data-action="payout">Auszahlen</button>
+				<button data-action="command" data-command="payin">Einzahlen</button>
+				<button data-action="command" data-command="payout">Auszahlen</button>
 			</aside>
 			<div class="clear"></div>
 		</header>
@@ -33,8 +34,16 @@
 				<li data-action="game" data-game="GodLadder"></li>
 			</ul>
 		</section>
+		<footer>
+			<article>
+				<button data-action="command" data-command="toplist"></button>
+				<button data-action="command" data-command="readme"></button>
+				<button data-action="command" data-command="help"></button>
+				<button data-action="command" data-command="notifications"></button>
+			</article>
+		</footer>
 		<script type="text/javascript">
-			Client.includeJS('/apps/api/jquery.min.js', 'js/Overview.js');
+			Client.includeJS('/apps/api/jquery.min.js', 'js/Globals.js', 'js/Overview.js');
 		</script>
 	</body>
 </html>

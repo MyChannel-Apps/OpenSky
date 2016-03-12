@@ -1,5 +1,6 @@
 var Overview = (new function Overview($) {
-	var _instance = this;
+	var _instance	= this;
+	var _body		= $('body');
 	
 	this.init = function init() {
 		try {
@@ -26,11 +27,25 @@ var Overview = (new function Overview($) {
 					case 'game':
 						Client.sendEvent('game', element.data('game'));
 					break;
+					case 'command':
+						switch(element.data('command')) {
+							case 'readme':
+								Client.executeSlashCommand('/readme Hi');
+							break;
+							case 'toplist':
+								Client.executeSlashCommand('/AppTop');
+							break;
+							default:
+								Client.sendEvent('command', element.data('command'));
+							break;
+						}			
+					break;
 				}
 			});
 			
-			if($('body').data('clienttype') == 'Android') {
-				$('section ul').width((100 * $('section ul li').length) + 'px');
+			if(_body.data('client') == 'Android') {
+				$('section ul').width((230 * $('section ul li').length) + 'px');
+				$('button[data-command="toggle"]').hide();
 			}
 		} catch(e) {
 			Client.sendEvent('exception', {
@@ -53,6 +68,9 @@ var Overview = (new function Overview($) {
 				break;
 				case 'knuddel':
 					$('header aside label span').text(data + ' Knuddel');
+				break;
+				case 'ui':
+					Globals.setData(_body, 'toggle', data.toggle);
 				break;
 			}
 		} catch(e) {

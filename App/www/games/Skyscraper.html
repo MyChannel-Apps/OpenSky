@@ -1,1 +1,28 @@
-Skyscraper
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<title>Skyscraper</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script type="text/javascript" src="../js/Debug.js"></script>
+		<script type="text/javascript" src="/apps/api/knuddels-api.js"></script>
+		<script type="text/javascript">
+			Client.includeCSS('css/Globals.css', 'games/Skyscraper.css');
+		</script>
+
+		<!--[if lt IE 9]>
+			<script type="text/javascript">
+				Client.includeJS('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js', 'https://oss.maxcdn.com/respond/1.4.2/respond.min.js');
+			</script>
+		<![endif]-->
+	</head>
+	<body>
+		<input type="text" name="dices" value="1" />
+		<br />
+		<div class="knuddel"></div>
+		<script type="text/javascript">
+			Client.includeJS('/apps/api/jquery.min.js', '../js/Globals.js', 'Skyscraper.js');
+		</script>
+	</body>
+</html>
