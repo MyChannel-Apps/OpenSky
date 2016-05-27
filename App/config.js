@@ -1,6 +1,6 @@
 var Config = {
 	Classes:	[ 'Popup' ],
-	Core:		[ 'Bank', 'UserInterface', 'ChannelTopic' ],
+	Core:		[ 'Heartbeat', 'Bank', 'UserInterface', 'ChannelTopic' ],
 	Features:	[],
 	Games:		[ 'Skyscraper', 'GodLadder', 'SmileyCode' ],
 	Team:		[ 'Remuneration' ],
