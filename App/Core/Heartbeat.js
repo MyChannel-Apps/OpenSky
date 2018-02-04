@@ -1,5 +1,5 @@
 function Heartbeat() {
-	var _url = 'http://OpenSky.ChannelApp.de';
+	var _url = '';
 	
 	this.init = function init() {
 		/*if(!KnuddelsServer.getExternalServerAccess().canAccessURL(_url)) {
@@ -22,5 +22,5 @@ function Heartbeat() {
 		}
 	};
 	
-	this.init();
+	//this.init();
 }
